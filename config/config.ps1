@@ -212,3 +212,10 @@ Write-Host  "$LTLPlatform" -ForegroundColor Green
 $env:INCLUDE="$env:VC_LTL_Root\TargetPlatform\header;$env:VC_LTL_Root\TargetPlatform\$LTLWindowsTargetPlatformMinVersion\header;$env:INCLUDE"
 $env:LIB="$env:VC_LTL_Root\TargetPlatform\$LTLWindowsTargetPlatformMinVersion\lib\$LTLPlatform;$env:LIB"
 
+if($env:VC_LTL_EnableNewStyleRuntimeDlls -ieq "true")
+{
+    if($LTLWindowsTargetPlatformMinVersion -lt [Version]::new("10.0.10240.0"))
+    {
+        $env:LIB="$env:VC_LTL_Root\TargetPlatform\Shared\$LTLPlatform;$env:LIB"
+    }
+}

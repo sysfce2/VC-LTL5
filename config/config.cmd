@@ -84,6 +84,8 @@ echo Platform : %LTLPlatform%
 set INCLUDE=%VC_LTL_Root%TargetPlatform\header;%VC_LTL_Root%TargetPlatform\%LTLWindowsTargetPlatformMinVersion%\header;%INCLUDE%
 set LIB=%VC_LTL_Root%TargetPlatform\%LTLWindowsTargetPlatformMinVersion%\lib\%LTLPlatform%;%LIB%
 
+if /i "%VC_LTL_EnableNewStyleRuntimeDlls%" == "true" (set LIB=%VC_LTL_Root%TargetPlatform\Shared\%LTLPlatform%;%LIB%)
+
 goto:eof
 
 
